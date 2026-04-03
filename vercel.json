@@ -2,6 +2,10 @@
   "buildCommand": "python manage.py collectstatic --noinput",
   "builds": [
     {
+      "src": "landing/static/**",
+      "use": "@vercel/static"
+    },
+    {
       "src": "api/index.py",
       "use": "@vercel/python",
       "config": {
