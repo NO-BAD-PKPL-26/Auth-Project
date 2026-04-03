@@ -282,161 +282,172 @@
     </section>
   </main>
 
-  <div id="modal1" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+<!-- ===== MODALS (Member Detail) ===== -->
+
+    <!-- Modal 1 - Zibeon -->
+    <div id="modal1" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
     <div class="modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('modal1')"></div>
     <div class="modal-content relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-8 w-full max-w-md">
-      <button onclick="closeModal('modal1')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light leading-none">&times;</button>
-      <div class="flex flex-col items-center gap-4 text-center">
+        <button onclick="closeModal('modal1')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light leading-none">&times;</button>
+        <div class="flex flex-col items-center gap-4 text-center">
         <img src="{% static 'landing_page/images/zibeon.jpg' %}" alt="Zibeon" class="w-24 h-24 rounded-full object-cover"/>
         <div>
-          <h3 class="text-xl font-bold">Zibeon Jonriano Wisnumoerti</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">NPM: 2406355634</p>
+            <h3 class="text-xl font-bold">Zibeon Jonriano Wisnumoerti</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">NPM: 2406355634</p>
         </div>
         <div class="w-full text-left bg-gray-50 dark:bg-gray-800 rounded-xl p-4 space-y-2">
-          <div class="flex justify-between text-sm">
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Role</span>
             <span class="font-medium">🎨 Frontend</span>
-          </div>
-          <div class="flex justify-between text-sm">
+            </div>
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Program Studi</span>
-            <span class="font-medium">Ilmu Komputer</span>
-          </div>
-          <div class="flex justify-between text-sm">
+            <span class="font-medium">Sistem Informasi</span>
+            </div>
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Fakultas</span>
-            <span class="font-medium">FASILKOM UI</span>
-          </div>
+            <span class="font-medium">Ilmu Komputer</span>
+            </div>
+            <div class="flex justify-between text-sm">
+            <span class="text-gray-500">Tanggal Lahir</span>
+            <span class="font-medium">21 Januari 2006</span>
+            </div>
         </div>
-      </div>
+        </div>
     </div>
-  </div>
+    </div>
 
-  <div id="modal2" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <!-- Modal 2 - Fauzan -->
+    <div id="modal2" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
     <div class="modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('modal2')"></div>
     <div class="modal-content relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-8 w-full max-w-md">
-      <button onclick="closeModal('modal2')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light leading-none">&times;</button>
-      <div class="flex flex-col items-center gap-4 text-center">
+        <button onclick="closeModal('modal2')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light leading-none">&times;</button>
+        <div class="flex flex-col items-center gap-4 text-center">
         <img src="{% static 'landing_page/images/fauzan.jpg' %}" alt="Fauzan" class="w-24 h-24 rounded-full object-cover"/>
         <div>
-          <h3 class="text-xl font-bold">Ahmad Fauzan Al Ayubi</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">NPM: 2406344284</p>
+            <h3 class="text-xl font-bold">Ahmad Fauzan Al Ayubi</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">NPM: 2406344284</p>
         </div>
         <div class="w-full text-left bg-gray-50 dark:bg-gray-800 rounded-xl p-4 space-y-2">
-          <div class="flex justify-between text-sm">
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Role</span>
             <span class="font-medium">🔑 Auth Access Logic</span>
-          </div>
-          <div class="flex justify-between text-sm">
+            </div>
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Program Studi</span>
-            <span class="font-medium">Ilmu Komputer</span>
-          </div>
-          <div class="flex justify-between text-sm">
+            <span class="font-medium">Sistem Informasi</span>
+            </div>
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Fakultas</span>
-            <span class="font-medium">FASILKOM UI</span>
-          </div>
+            <span class="font-medium">Ilmu Komputer</span>
+            </div>
+            <div class="flex justify-between text-sm">
+            <span class="text-gray-500">Tanggal Lahir</span>
+            <span class="font-medium">02 Desember 2005</span>
+            </div>
         </div>
-      </div>
+        </div>
     </div>
-  </div>
+    </div>
 
-  <div id="modal3" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <!-- Modal 3 - Alfino -->
+    <div id="modal3" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
     <div class="modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('modal3')"></div>
     <div class="modal-content relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-8 w-full max-w-md">
-      <button onclick="closeModal('modal3')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light leading-none">&times;</button>
-      <div class="flex flex-col items-center gap-4 text-center">
+        <button onclick="closeModal('modal3')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light leading-none">&times;</button>
+        <div class="flex flex-col items-center gap-4 text-center">
         <img src="{% static 'landing_page/images/alfino.jpg' %}" alt="Alfino" class="w-24 h-24 rounded-full object-cover"/>
         <div>
-          <h3 class="text-xl font-bold">Alfino Ahmad Feriza</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">NPM: 2406405304</p>
+            <h3 class="text-xl font-bold">Alfino Ahmad Feriza</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">NPM: 2406405304</p>
         </div>
         <div class="w-full text-left bg-gray-50 dark:bg-gray-800 rounded-xl p-4 space-y-2">
-          <div class="flex justify-between text-sm">
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Role</span>
             <span class="font-medium">🔗 OAuth (Google)</span>
-          </div>
-          <div class="flex justify-between text-sm">
+            </div>
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Program Studi</span>
-            <span class="font-medium">Ilmu Komputer</span>
-          </div>
-          <div class="flex justify-between text-sm">
+            <span class="font-medium">Sistem Informasi</span>
+            </div>
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Fakultas</span>
-            <span class="font-medium">FASILKOM UI</span>
-          </div>
+            <span class="font-medium">Ilmu Komputer</span>
+            </div>
+            <div class="flex justify-between text-sm">
+            <span class="text-gray-500">Tanggal Lahir</span>
+            <span class="font-medium">15 Juli 2006</span>
+            </div>
         </div>
-      </div>
+        </div>
     </div>
-  </div>
+    </div>
 
-  <div id="modal4" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <!-- Modal 4 - Dimaz -->
+    <div id="modal4" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
     <div class="modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('modal4')"></div>
     <div class="modal-content relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-8 w-full max-w-md">
-      <button onclick="closeModal('modal4')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light leading-none">&times;</button>
-      <div class="flex flex-col items-center gap-4 text-center">
+        <button onclick="closeModal('modal4')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light leading-none">&times;</button>
+        <div class="flex flex-col items-center gap-4 text-center">
         <img src="{% static 'landing_page/images/dimaz.jpg' %}" alt="Dimaz" class="w-24 h-24 rounded-full object-cover"/>
         <div>
-          <h3 class="text-xl font-bold">Raden Pandji M. Dimaz Bagus H.D. Surya</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">NPM: 2406439343</p>
+            <h3 class="text-xl font-bold">Raden Pandji M. Dimaz Bagus H.D. Surya</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">NPM: 2406439343</p>
         </div>
         <div class="w-full text-left bg-gray-50 dark:bg-gray-800 rounded-xl p-4 space-y-2">
-          <div class="flex justify-between text-sm">
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Role</span>
             <span class="font-medium">⚙️ Backend</span>
-          </div>
-          <div class="flex justify-between text-sm">
+            </div>
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Program Studi</span>
-            <span class="font-medium">Ilmu Komputer</span>
-          </div>
-          <div class="flex justify-between text-sm">
+            <span class="font-medium">Sistem Informasi</span>
+            </div>
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Fakultas</span>
-            <span class="font-medium">FASILKOM UI</span>
-          </div>
+            <span class="font-medium">Ilmu Komputer</span>
+            </div>
+            <div class="flex justify-between text-sm">
+            <span class="text-gray-500">Tanggal Lahir</span>
+            <span class="font-medium">17 Januari 2006</span>
+            </div>
         </div>
-      </div>
+        </div>
     </div>
-  </div>
+    </div>
 
-  <div id="modal5" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <!-- Modal 5 - Natan -->
+    <div id="modal5" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
     <div class="modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('modal5')"></div>
     <div class="modal-content relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-8 w-full max-w-md">
-      <button onclick="closeModal('modal5')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light leading-none">&times;</button>
-      <div class="flex flex-col items-center gap-4 text-center">
+        <button onclick="closeModal('modal5')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl font-light leading-none">&times;</button>
+        <div class="flex flex-col items-center gap-4 text-center">
         <img src="{% static 'landing_page/images/natan.jpg' %}" alt="Natan" class="w-24 h-24 rounded-full object-cover"/>
         <div>
-          <h3 class="text-xl font-bold">Natan Harum Panogu Silalahi</h3>
-          <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">NPM: 2406496170</p>
+            <h3 class="text-xl font-bold">Natan Harum Panogu Silalahi</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">NPM: 2406496170</p>
         </div>
         <div class="w-full text-left bg-gray-50 dark:bg-gray-800 rounded-xl p-4 space-y-2">
-          <div class="flex justify-between text-sm">
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Role</span>
             <span class="font-medium">⚙️ Backend</span>
-          </div>
-          <div class="flex justify-between text-sm">
+            </div>
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Program Studi</span>
-            <span class="font-medium">Ilmu Komputer</span>
-          </div>
-          <div class="flex justify-between text-sm">
+            <span class="font-medium">Sistem Informasi</span>
+            </div>
+            <div class="flex justify-between text-sm">
             <span class="text-gray-500">Fakultas</span>
-            <span class="font-medium">FASILKOM UI</span>
-          </div>
+            <span class="font-medium">Ilmu Komputer</span>
+            </div>
+            <div class="flex justify-between text-sm">
+            <span class="text-gray-500">Tanggal Lahir</span>
+            <span class="font-medium">15 Desember 2005</span>
+            </div>
         </div>
-      </div>
+        </div>
     </div>
-  </div>
-
-  <footer class="border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-950 text-white">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between flex-wrap gap-3">
-      <div class="flex items-center gap-6">
-        <div>
-          <span class="text-gray-500 text-xs uppercase tracking-widest">Kelompok</span>
-          <span class="ml-2 font-black text-gray-900 dark:text-white text-lg tracking-widest brand-text">NO BAD</span>
-        </div>
-        <div>
-          <span class="text-gray-500 text-xs uppercase tracking-widest">Mata Kuliah</span>
-          <span class="ml-2 font-black text-gray-900 dark:text-white text-lg tracking-widest brand-text">PKPL</span>
-        </div>
-      </div>
-      <span class="text-gray-500 text-sm font-medium brand-text">2026</span>
     </div>
-  </footer>
 
   <div id="modalLoginRequired" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
     <div class="modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('modalLoginRequired')"></div>
