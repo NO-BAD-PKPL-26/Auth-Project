@@ -172,7 +172,7 @@
               </a>
             </div>
           {% else %}
-            <form method="post" action="/accounts/google/login/">
+            <form method="post" action="{% provider_login_url 'google' %}">
               {% csrf_token %}
               <button type="submit"
                 class="google-btn flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900 text-white text-sm font-semibold">

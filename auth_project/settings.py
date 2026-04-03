@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 from pathlib import Path
+from urllib.parse import urlparse, unquote
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +29,6 @@ if not SECRET_KEY:
     raise RuntimeError('SECRET_KEY environment variable must be set.')
 
 PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
-IS_VERCEL_RUNTIME = bool(os.getenv('VERCEL') or os.getenv('VERCEL_URL') or os.getenv('VERCEL_ENV'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not PRODUCTION
 
@@ -122,20 +122,41 @@ WSGI_APPLICATION = 'auth_project.wsgi.application'
 
 # Database configuration
 if PRODUCTION:
-    # Production: gunakan PostgreSQL dengan kredensial dari environment variables
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST'),
-            'PORT': os.getenv('DB_PORT'),
-            'OPTIONS': {
-                'options': f"-c search_path={os.getenv('SCHEMA', 'public')}"
+    database_url = os.getenv('DATABASE_URL')
+    if database_url:
+        parsed_url = urlparse(database_url)
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': parsed_url.path.lstrip('/'),
+                'USER': unquote(parsed_url.username or ''),
+                'PASSWORD': unquote(parsed_url.password or ''),
+                'HOST': parsed_url.hostname,
+                'PORT': parsed_url.port or 5432,
+                'CONN_MAX_AGE': 0,
+                'OPTIONS': {
+                    'sslmode': os.getenv('DB_SSLMODE', 'require'),
+                    'options': f"-c search_path={os.getenv('SCHEMA', 'public')}"
+                }
             }
         }
-    }
+    else:
+        # Production: gunakan PostgreSQL dengan kredensial dari environment variables
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': os.getenv('DB_NAME'),
+                'USER': os.getenv('DB_USER'),
+                'PASSWORD': os.getenv('DB_PASSWORD'),
+                'HOST': os.getenv('DB_HOST'),
+                'PORT': os.getenv('DB_PORT'),
+                'CONN_MAX_AGE': 0,
+                'OPTIONS': {
+                    'sslmode': os.getenv('DB_SSLMODE', 'require'),
+                    'options': f"-c search_path={os.getenv('SCHEMA', 'public')}"
+                }
+            }
+        }
 else:
     # Development: gunakan SQLite
     DATABASES = {
@@ -144,9 +165,6 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-    # Vercel filesystem is read-only, so use /tmp when running demo mode there.
-    if IS_VERCEL_RUNTIME:
-        DATABASES['default']['NAME'] = '/tmp/db.sqlite3'
 
 
 # Password validation
@@ -185,12 +203,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-if PRODUCTION:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-else:
-    # In demo mode, serve app static files directly without collectstatic.
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-    WHITENOISE_USE_FINDERS = True
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Security settings for production
 if PRODUCTION:
