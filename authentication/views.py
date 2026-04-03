@@ -12,7 +12,11 @@ logger = logging.getLogger(__name__)
 
 # email anggota kelompok
 GROUP_MEMBER_EMAILS = {
-    "alfino.feriza@gmail.com"
+    "alfino.feriza@gmail.com", 
+    "nathansilalahi2415@gmail.com",
+    "ahmadfauzan2125@gmail.com",
+    "zibeonjonriano21@gmail.com",
+    "dimazbaguspisan@gmail.com"
 }
 
 def is_group_member(user):
@@ -30,7 +34,7 @@ def home_view(request):
     if request.user.is_authenticated:
         preference, _ = UserPreference.objects.get_or_create(user=request.user)
 
-    return render(request, "landing_page/home.html", {
+    return render(request, "landing_page.html", {
         "preference": preference,
         "is_group_member": is_group_member(request.user),
     })
@@ -60,7 +64,7 @@ def update_preferences_view(request):
     dark_mode = body.get("dark_mode")
     font = body.get("font")
 
-    # Validasi: pastikan tidak ada field asing yang masuk
+    # Memvalidasi tidak ada field lain
     allowed_keys = {"dark_mode", "font"}
     if not set(body.keys()).issubset(allowed_keys):
         return JsonResponse({"success": False, "message": "Unknown fields in request"}, status=400)

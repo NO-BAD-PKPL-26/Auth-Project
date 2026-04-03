@@ -474,8 +474,11 @@
 
   <script>
     const isLoggedIn = {{ user.is_authenticated|yesno:"true,false" }};
+    const isGroupMember = {{ is_group_member|yesno:"true,false" }};
     const initialDarkMode = {% if preference %}{{ preference.dark_mode|yesno:"true,false" }}{% else %}false{% endif %};
     const initialFont = "{% if preference %}{{ preference.font }}{% else %}inria-serif{% endif %}";
+    let currentDarkMode = initialDarkMode;
+    let currentFont = initialFont;
 
     function getCookie(name) {
       let cookieValue = null;
@@ -544,7 +547,14 @@
         return;
       }
 
+      if (!isGroupMember) {
+        checkbox.checked = currentDarkMode;
+        showToast("❌ Only group members can change preferences.");
+        return;
+      }
+
       const label = document.getElementById("darkModeLabel");
+      const previousDarkMode = currentDarkMode;
       const enabled = checkbox.checked;
 
       if (enabled) {
@@ -556,12 +566,26 @@
       }
 
       savePreferences({ dark_mode: enabled })
-        .then(() => showToast("✅ Theme updated!"))
-        .catch((err) => showToast("❌ " + err.message));
+        .then(() => {
+          currentDarkMode = enabled;
+          showToast("✅ Theme updated!");
+        })
+        .catch((err) => {
+          checkbox.checked = previousDarkMode;
+          if (previousDarkMode) {
+            document.documentElement.classList.add("dark");
+            label.textContent = "ON";
+          } else {
+            document.documentElement.classList.remove("dark");
+            label.textContent = "OFF";
+          }
+          showToast("❌ " + err.message);
+        });
     }
 
     function changeFont(value) {
       const fontSelect = document.getElementById("fontSelect");
+      const previousFont = currentFont;
 
       if (!isLoggedIn) {
         openModal("modalLoginRequired");
@@ -569,14 +593,23 @@
         return;
       }
 
+      if (!isGroupMember) {
+        fontSelect.value = currentFont;
+        showToast("❌ Only group members can change preferences.");
+        return;
+      }
+
       applyFont(value);
 
       savePreferences({ font: value })
-        .then(() => showToast("✅ Font updated!"))
+        .then(() => {
+          currentFont = value;
+          showToast("✅ Font updated!");
+        })
         .catch((err) => {
           showToast("❌ " + err.message);
-          fontSelect.value = initialFont;
-          applyFont(initialFont);
+          fontSelect.value = previousFont;
+          applyFont(previousFont);
         });
     }
 
