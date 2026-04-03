@@ -136,7 +136,6 @@ if PRODUCTION:
                 'CONN_MAX_AGE': 0,
                 'OPTIONS': {
                     'sslmode': os.getenv('DB_SSLMODE', 'require'),
-                    'options': f"-c search_path={os.getenv('SCHEMA', 'public')}"
                 }
             }
         }
