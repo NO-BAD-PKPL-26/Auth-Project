@@ -28,6 +28,7 @@ if not SECRET_KEY:
     raise RuntimeError('SECRET_KEY environment variable must be set.')
 
 PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
+IS_VERCEL_RUNTIME = bool(os.getenv('VERCEL') or os.getenv('VERCEL_URL') or os.getenv('VERCEL_ENV'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not PRODUCTION
 
@@ -144,7 +145,7 @@ else:
         }
     }
     # Vercel filesystem is read-only, so use /tmp when running demo mode there.
-    if os.getenv('VERCEL'):
+    if IS_VERCEL_RUNTIME:
         DATABASES['default']['NAME'] = '/tmp/db.sqlite3'
 
 
