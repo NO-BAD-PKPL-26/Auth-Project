@@ -143,6 +143,9 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+    # Vercel filesystem is read-only, so use /tmp when running demo mode there.
+    if os.getenv('VERCEL'):
+        DATABASES['default']['NAME'] = '/tmp/db.sqlite3'
 
 
 # Password validation
@@ -181,7 +184,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+if PRODUCTION:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+else:
+    # In demo mode, serve app static files directly without collectstatic.
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    WHITENOISE_USE_FINDERS = True
 
 # Security settings for production
 if PRODUCTION:
